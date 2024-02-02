@@ -24,7 +24,7 @@ export default function Rules() {
     <footer className="fixed bottom-6 right-3 xs:right-6">
       <button
         onClick={() => dispatch({ type: 'click' })}
-        className="rounded px-8 py-2 text-sm font-bold uppercase tracking-widest outline outline-1 duration-100 hover:bg-white hover:text-dark-text"
+        className="rounded px-8 py-2 text-sm uppercase tracking-[.25em] outline outline-1 duration-100 hover:bg-white hover:text-dark-text"
       >
         Rules
       </button>
@@ -36,14 +36,14 @@ export default function Rules() {
         <div
           id="dialog"
           ref={dialogRef}
-          className={`${dialogAnimation} absolute left-1/2 h-5/6 w-full -translate-x-1/2  rounded-t-xl bg-white p-8 pt-6 text-center text-dark-text xs:top-1/2 xs:h-fit xs:w-96 xs:-translate-y-1/2 xs:rounded-xl xs:text-left`}
+          className={`${dialogAnimation} absolute left-1/2 h-full w-full -translate-x-1/2  bg-white p-8 pt-6 text-center text-dark-text xs:top-1/2 xs:h-fit xs:w-72 xs:-translate-y-1/2 xs:rounded-xl xs:text-left sm:w-96`}
         >
           <span className="inline-block text-3xl font-bold uppercase">
             Rules
           </span>
           <button
             onClick={() => dispatch({ type: 'click' })}
-            className="absolute bottom-12 right-1/2 translate-x-1/2 rounded p-3 duration-100 hover:bg-black/10 xs:bottom-auto xs:right-8 xs:top-6 xs:translate-x-0"
+            className="absolute bottom-20 right-1/2 translate-x-1/2 rounded p-3 duration-100 hover:bg-black/10 xs:bottom-auto xs:right-8 xs:top-6 xs:translate-x-0"
           >
             <img src={closeIcon} alt="" />
           </button>

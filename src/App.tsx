@@ -1,18 +1,16 @@
-import Header from './Header';
-import MainScreen from './MainScreen';
-import Rules from './Rules';
+import { useContext } from 'react';
+import PlayerChooseScreen from './PlayerChooseScreen';
+import StartScreen from './StartScreen';
+import { StageContext } from './StageContext';
 
 export default function App() {
+  const { stage } = useContext(StageContext);
   return (
     <div
       id="App"
-      className="min-h-screen bg-bg-gradient px-3 pt-12 text-white xs:px-6"
+      className="flex min-h-screen flex-col justify-center bg-bg-gradient px-3 pb-6 pt-12 text-white xs:px-6"
     >
-      <Header />
-      <main className="grid h-96 place-content-center">
-        <MainScreen />
-      </main>
-      <Rules />
+      {stage === 'not-started' ? <StartScreen /> : <PlayerChooseScreen />}
     </div>
   );
 }
