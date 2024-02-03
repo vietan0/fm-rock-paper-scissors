@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 import Header from './Header';
-import { StageContext } from './StageContext';
+import { GameContext } from './GameContext';
 
 export default function StartScreen() {
-  const { dispatch } = useContext(StageContext);
+  const { dispatch } = useContext(GameContext);
   function startGame() {
     dispatch({ type: 'start' });
   }

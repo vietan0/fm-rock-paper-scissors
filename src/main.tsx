@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
-import StageProvider from './StageContext.tsx';
+import GameProvider from './GameContext.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <StageProvider>
+    <GameProvider>
       <App />
-    </StageProvider>
+    </GameProvider>
   </React.StrictMode>,
 );
