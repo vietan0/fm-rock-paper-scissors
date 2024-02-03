@@ -16,7 +16,6 @@ export default function App() {
       ) : gameState.step === 'player-choose' ? (
         <PlayerChooseScreen />
       ) : (
-        // gameState.step = 'computer-choose' | 'finished'
         <ComputerChooseScreen />
       )}
     </div>

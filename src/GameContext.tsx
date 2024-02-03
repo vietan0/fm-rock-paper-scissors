@@ -19,7 +19,8 @@ export type GameState = {
 export type GameAction =
   | { type: 'start' }
   | { type: 'player-choose'; payload: Choice }
-  | { type: 'computer-choose'; payload: Choice };
+  | { type: 'computer-choose'; payload: Choice }
+  | { type: 'calculate' };
 export type GameContextType = {
   gameState: GameState;
   dispatch: React.Dispatch<GameAction>;
@@ -29,8 +30,7 @@ function reducer(state: GameState, action: GameAction) {
   if (action.type === 'start') {
     const newState: GameState = { ...defaultState, step: 'player-choose' };
     return newState;
-  }
-  if (action.type === 'player-choose') {
+  } else if (action.type === 'player-choose') {
     const newState: GameState = {
       ...state,
       step: 'computer-choose',
@@ -40,15 +40,19 @@ function reducer(state: GameState, action: GameAction) {
       },
     };
     return newState;
-  } else {
-    // action.type is 'computer-choose'
+  } else if (action.type === 'computer-choose') {
     const newState: GameState = {
       ...state,
-      step: 'finished',
       choices: {
         ...state.choices,
         computer: action.payload,
       },
+    };
+    return newState;
+  } else {
+    // action.type is definitely 'calculate'
+    const newState: GameState = {
+      ...state,
       result: rockPaperScissorsLogic(
         state.choices.player!,
         state.choices.computer!,
