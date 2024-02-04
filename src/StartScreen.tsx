@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import Header from './Header';
 import { GameContext } from './GameContext';
+import Rules from './Rules';
 
 export default function StartScreen() {
   const { dispatch } = useContext(GameContext);
@@ -16,6 +17,7 @@ export default function StartScreen() {
       >
         Start Game
       </button>
+      <Rules />
     </div>
   );
 }

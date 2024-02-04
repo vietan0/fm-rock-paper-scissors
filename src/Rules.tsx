@@ -21,7 +21,7 @@ export default function Rules() {
   const dialogAnimation = `${popupIsOpen ? 'bottom-0 xs:scale-100' : '-bottom-full xs:scale-0'} duration-150`;
 
   return (
-    <footer className="fixed bottom-6 right-3 xs:right-6">
+    <footer className="fixed bottom-6 left-0 flex w-full justify-center rounded-full px-3 xs:justify-end xs:px-6">
       <button
         onClick={() => dispatch({ type: 'click' })}
         className="rounded px-8 py-2 text-sm uppercase tracking-[.25em] outline outline-1 duration-100 hover:bg-white hover:text-dark-text"

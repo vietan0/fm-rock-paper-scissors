@@ -18,7 +18,7 @@ export default function ComputerChooseScreen() {
     setTimeout(() => {
       const choice = computerChoose();
       dispatch({ type: 'computer-choose', payload: choice });
-    }, 3000);
+    }, 2000);
   }, []);
 
   useEffect(() => {

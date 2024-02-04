@@ -2,7 +2,7 @@ import { Choice } from './GameContext';
 
 export default function computerChoose(): Choice {
   const x = Math.random();
-  if (x < 0.33) return 'rock';
-  if (x >= 0.33 && x < 0.66) return 'paper';
+  if (x < 1 / 3) return 'rock';
+  else if (x < 2 / 3) return 'paper';
   return 'scissors';
 }
