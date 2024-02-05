@@ -23,36 +23,44 @@ export default function ComputerChooseScreen() {
 
   useEffect(() => {
     if (gameState.choices.computer) {
-      dispatch({ type: 'calculate' });
+      setTimeout(() => {
+        dispatch({ type: 'calculate' });
+      }, 500);
     }
   }, [gameState.choices.computer]);
-
-  const grid2 =
-    'max-w-xl xs:grid-cols-[minmax(150px,_1fr)_0_minmax(150px,_1fr)]';
-  const grid3 =
-    'max-w-3xl md:gap-x-10 grid-cols-[repeat(2,_minmax(150px,_1fr))] sm:grid-cols-[repeat(3,_minmax(150px,_1fr))]';
 
   return (
     <div id="ComputerChooseScreen">
       <Header />
       <main className="h-96">
         <div
-          className={`${gameState.result ? grid3 : grid2} mx-auto grid items-center justify-center gap-y-14`}
+          className={`${gameState.result ? 'sm:gap-64' : 'gap-0'} relative mx-auto flex max-w-3xl justify-center duration-200`}
         >
-          <div className="flex flex-col items-center gap-6 sm:gap-20">
+          <div className="flex max-w-72 flex-grow basis-1/4 flex-col items-center gap-6 sm:gap-14 md:gap-20">
             <p className="h-12 text-center uppercase tracking-widest xs:text-lg">
               You Picked
             </p>
             <ChoiceChip
               choice={gameState.choices.player}
               winner={gameState.result === 'win'}
-              className="scale-125 sm:scale-150 md:scale-[2.5]"
+              className="xs:scale-125 sm:scale-[1.75] md:scale-[2.5]"
             />
           </div>
+          <div className="flex max-w-72 flex-grow basis-1/4 flex-col items-center gap-6 sm:gap-14 md:gap-20">
+            <p className="h-12 text-center uppercase tracking-widest xs:text-lg">
+              The House Picked
+            </p>
+            <ChoiceChip
+              choice={gameState.choices.computer}
+              winner={gameState.result === 'lose'}
+              className="xs:scale-125 sm:scale-[1.75] md:scale-[2.5]"
+            />
+          </div>
+
           <div
-            className={`${gameState.result ? 'order-last col-span-2 scale-100 sm:order-none' : 'scale-0'} h-fit self-end duration-200 sm:col-auto`}
+            className={`${gameState.result ? 'scale-100' : 'scale-0'} absolute -bottom-[calc(12rem-5vw)] left-1/2 h-fit -translate-x-1/2 transition-transform delay-150 duration-200 sm:bottom-0`}
           >
-            <p className="mb-3 text-center text-4xl font-bold uppercase sm:mb-6 md:text-5xl">
+            <p className="mb-3 whitespace-nowrap text-center text-4xl font-bold uppercase sm:mb-4 md:mb-6 md:text-5xl">
               {resultMsg[gameState.result!]}
             </p>
             <button
@@ -61,16 +69,6 @@ export default function ComputerChooseScreen() {
             >
               Play Again
             </button>
-          </div>
-          <div className="flex flex-col items-center gap-6 sm:gap-20">
-            <p className="h-12 text-center uppercase tracking-widest xs:text-lg">
-              The House Picked
-            </p>
-            <ChoiceChip
-              choice={gameState.choices.computer}
-              winner={gameState.result === 'lose'}
-              className="scale-125 sm:scale-150 md:scale-[2.5]"
-            />
           </div>
         </div>
       </main>

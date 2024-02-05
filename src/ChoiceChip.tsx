@@ -48,9 +48,9 @@ export default function ChoiceChip({
       onClick={() => dispatch({ type: 'player-choose', payload: choice })}
       className={`
         ${features[choice].color} 
-        ${interactive ? 'hover:scale-105 active:scale-100' : ''}
+        ${interactive ? 'duration-[50ms] hover:scale-105 active:scale-100' : ''}
         ${className} 
-        grid h-24 w-24 place-content-center rounded-full bg-gradient-to-b shadow-[inset_0_-5px_0_0_rgb(0_0_0_/_20%)] duration-[25ms]`}
+        grid h-24 w-24 place-content-center rounded-full bg-gradient-to-b shadow-[inset_0_-5px_0_0_rgb(0_0_0_/_20%)]`}
     >
       {winner && winnerIndicator}
       <div className="grid h-[4.25rem] w-[4.25rem] place-content-center rounded-full bg-gradient-to-t from-white to-gray-300 shadow-[inset_0_6px_0_0_rgb(0_0_0_/_10%)]">
@@ -60,7 +60,7 @@ export default function ChoiceChip({
   ) : (
     // empty circle
     <div
-      className={`${className} grid h-24 w-24 place-content-center rounded-full duration-[25ms]`}
+      className={`${className} grid h-24 w-24 place-content-center rounded-full`}
     >
       <div className="grid h-[4.25rem] w-[4.25rem] animate-pulse place-content-center rounded-full bg-[hsl(237,_49%,_15%)] shadow-inner"></div>
     </div>
