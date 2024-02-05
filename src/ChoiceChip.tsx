@@ -3,6 +3,7 @@ import paperIcon from './assets/images/icon-paper.svg';
 import scissorsIcon from './assets/images/icon-scissors.svg';
 import { useContext } from 'react';
 import { Choice, GameContext } from './GameContext';
+import computerChoose from './computerChoose';
 
 type Props = {
   choice?: Choice;
@@ -41,11 +42,19 @@ export default function ChoiceChip({
   winner = false,
   className = '',
 }: Props) {
-  const { dispatch } = useContext(GameContext);
+  const { gameState, dispatch } = useContext(GameContext);
   const Tag = interactive ? 'button' : 'div';
   return choice ? (
     <Tag
-      onClick={() => dispatch({ type: 'player-choose', payload: choice })}
+      onClick={() => {
+        dispatch({ type: 'player-choose', payload: choice });
+        setTimeout(() => {
+          if (!gameState.result) {
+            const choice = computerChoose();
+            dispatch({ type: 'computer-choose', payload: choice });
+          }
+        }, 2000);
+      }}
       className={`
         ${features[choice].color} 
         ${interactive ? 'duration-[50ms] hover:scale-105 active:scale-100' : ''}

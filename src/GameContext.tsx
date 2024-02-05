@@ -1,4 +1,4 @@
-import { createContext, useReducer } from 'react';
+import { createContext, useEffect, useReducer } from 'react';
 import rockPaperScissorsLogic from './rockPaperScissorsLogic';
 
 export type Step =
@@ -80,6 +80,19 @@ type Props = {
 
 export default function GameProvider({ children }: Props) {
   const [stage, dispatch] = useReducer(reducer, defaultState);
+
+  useEffect(() => {
+    const history: Array<Result> = localStorage.getItem('history')
+      ? JSON.parse(localStorage.getItem('history')!)
+      : [];
+    if (stage.result) {
+      localStorage.setItem(
+        'history',
+        JSON.stringify([...history, stage.result]),
+      );
+    }
+  }, [stage.result]);
+
   return (
     <GameContext.Provider value={{ gameState: stage, dispatch }}>
       {children}

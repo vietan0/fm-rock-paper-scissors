@@ -1,4 +1,21 @@
+import { useContext, useEffect, useState } from 'react';
+import { GameContext, Result } from './GameContext';
+
 export default function Header() {
+  const { gameState } = useContext(GameContext);
+  const history: Array<Result> = localStorage.getItem('history')
+    ? JSON.parse(localStorage.getItem('history')!)
+    : [];
+
+  const [wins, setWins] = useState(history.filter((r) => r === 'win').length);
+
+  useEffect(() => {
+    const history: Array<Result> = localStorage.getItem('history')
+      ? JSON.parse(localStorage.getItem('history')!)
+      : [];
+    setWins(history.filter((r) => r === 'win').length);
+  }, [gameState.result]);
+
   return (
     <header className="mx-auto mb-12 flex max-w-[580px] items-center justify-between gap-3 rounded-2xl p-3 outline outline-header-outline xs:px-5 md:scale-[1.2]">
       <h1 className="w-min text-[clamp(1.25rem,_6vw,_2rem)] font-bold uppercase leading-5 [text-shadow:_0_8px_16px_rgb(0_0_0_/_10%)] xs:leading-[0.85] xs:tracking-tight">
@@ -11,7 +28,7 @@ export default function Header() {
         <p className="text-xs uppercase tracking-widest text-score-text xs:text-sm">
           score
         </p>
-        <p className="text-4xl font-bold text-dark-text xs:text-6xl ">0</p>
+        <p className="text-4xl font-bold text-dark-text xs:text-6xl ">{wins}</p>
       </div>
     </header>
   );

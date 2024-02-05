@@ -2,7 +2,6 @@ import { useContext, useEffect } from 'react';
 import ChoiceChip from './ChoiceChip';
 import Header from './Header';
 import { GameContext, Result } from './GameContext';
-import computerChoose from './computerChoose';
 import Rules from './Rules';
 
 const resultMsg: Record<Result, string> = {
@@ -13,15 +12,6 @@ const resultMsg: Record<Result, string> = {
 
 export default function ComputerChooseScreen() {
   const { gameState, dispatch } = useContext(GameContext);
-
-  useEffect(() => {
-    setTimeout(() => {
-      if (!gameState.result) {
-        const choice = computerChoose();
-        dispatch({ type: 'computer-choose', payload: choice });
-      }
-    }, 2000);
-  }, []);
 
   useEffect(() => {
     if (gameState.choices.computer) {
