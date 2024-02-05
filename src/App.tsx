@@ -9,7 +9,7 @@ export default function App() {
   return (
     <div
       id="App"
-      className="flex min-h-screen flex-col overflow-hidden bg-bg-gradient px-3 pb-6 pt-12 text-white xs:justify-center xs:px-6"
+      className="flex min-h-screen flex-col overflow-hidden bg-bg-gradient px-3 pt-12 text-white xs:justify-center xs:px-6"
     >
       {gameState.step === 'not-started' ? (
         <StartScreen />
