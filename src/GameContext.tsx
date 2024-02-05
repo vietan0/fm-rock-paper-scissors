@@ -1,5 +1,6 @@
 import { createContext, useEffect, useReducer } from 'react';
 import rockPaperScissorsLogic from './rockPaperScissorsLogic';
+import getDefaultState from './getDefaultState';
 
 export type Step =
   | 'not-started'
@@ -15,6 +16,7 @@ export type GameState = {
     computer?: Choice;
   };
   result?: Result;
+  wins: number;
 };
 export type GameAction =
   | { type: 'start' }
@@ -28,7 +30,7 @@ export type GameContextType = {
 
 function reducer(state: GameState, action: GameAction) {
   if (action.type === 'start') {
-    const newState: GameState = { ...defaultState, step: 'player-choose' };
+    const newState: GameState = { ...getDefaultState(), step: 'player-choose' };
     return newState;
   } else if (action.type === 'player-choose') {
     const newState: GameState = {
@@ -51,25 +53,19 @@ function reducer(state: GameState, action: GameAction) {
     return newState;
   } else {
     // action.type is definitely 'calculate'
+    const result = rockPaperScissorsLogic(
+      state.choices.player!,
+      state.choices.computer!,
+    );
     const newState: GameState = {
       ...state,
-      result: rockPaperScissorsLogic(
-        state.choices.player!,
-        state.choices.computer!,
-      ),
+      result,
+      wins: result === 'win' ? state.wins + 1 : state.wins,
     };
     return newState;
   }
 }
 
-const defaultState: GameState = {
-  step: 'not-started',
-  choices: {
-    player: undefined,
-    computer: undefined,
-  },
-  result: undefined,
-};
 export const GameContext = createContext<GameContextType>(
   {} as GameContextType,
 ); /* assert for initiation */
@@ -79,7 +75,7 @@ type Props = {
 };
 
 export default function GameProvider({ children }: Props) {
-  const [stage, dispatch] = useReducer(reducer, defaultState);
+  const [stage, dispatch] = useReducer(reducer, undefined, getDefaultState);
 
   useEffect(() => {
     const history: Array<Result> = localStorage.getItem('history')
