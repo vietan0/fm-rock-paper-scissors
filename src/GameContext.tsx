@@ -1,6 +1,7 @@
 import { createContext, useEffect, useReducer } from 'react';
-import rockPaperScissorsLogic from './rockPaperScissorsLogic';
+
 import getDefaultState from './getDefaultState';
+import rockPaperScissorsLogic from './rockPaperScissorsLogic';
 
 export type Step =
   | 'not-started'

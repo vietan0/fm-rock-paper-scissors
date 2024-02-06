@@ -1,7 +1,8 @@
 import { useContext, useEffect } from 'react';
+
 import ChoiceChip from './ChoiceChip';
-import Header from './Header';
 import { GameContext, Result } from './GameContext';
+import Header from './Header';
 import Rules from './Rules';
 
 const resultMsg: Record<Result, string> = {
@@ -19,7 +20,7 @@ export default function ComputerChooseScreen() {
         dispatch({ type: 'calculate' });
       }, 500);
     }
-  }, [gameState.choices.computer]);
+  }, [gameState.choices.computer, dispatch]);
 
   return (
     <div id="ComputerChooseScreen">

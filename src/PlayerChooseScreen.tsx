@@ -1,7 +1,7 @@
+import bgTriangle from './assets/images/bg-triangle.svg';
 import ChoiceChip from './ChoiceChip';
 import Header from './Header';
 import Rules from './Rules';
-import bgTriangle from './assets/images/bg-triangle.svg';
 
 export default function PlayerChooseScreen() {
   return (

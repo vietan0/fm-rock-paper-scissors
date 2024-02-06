@@ -1,9 +1,10 @@
-import rockIcon from './assets/images/icon-rock.svg';
-import paperIcon from './assets/images/icon-paper.svg';
-import scissorsIcon from './assets/images/icon-scissors.svg';
 import { useContext } from 'react';
-import { Choice, GameContext } from './GameContext';
+
+import paperIcon from './assets/images/icon-paper.svg';
+import rockIcon from './assets/images/icon-rock.svg';
+import scissorsIcon from './assets/images/icon-scissors.svg';
 import computerChoose from './computerChoose';
+import { Choice, GameContext } from './GameContext';
 
 type Props = {
   choice?: Choice;

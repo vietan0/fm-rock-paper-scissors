@@ -1,6 +1,7 @@
 import { useContext } from 'react';
-import Header from './Header';
+
 import { GameContext } from './GameContext';
+import Header from './Header';
 import Rules from './Rules';
 
 export default function StartScreen() {
