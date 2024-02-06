@@ -18,6 +18,10 @@ export default function App() {
     >
       <Header />
       <main className={step === 'not-started' ? '' : 'h-96'}>
+        <h1 className="sr-only">
+          Rock, Paper, Scissors - Frontend Mentor Challenge - Solution by Viet
+          An
+        </h1>
         {step === 'not-started' ? (
           <StartScreen />
         ) : step === 'player-choose' ? (

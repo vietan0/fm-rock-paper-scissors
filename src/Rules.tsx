@@ -55,6 +55,28 @@ export default function Rules() {
             width={304}
             height={270}
           />
+          <div
+            className="mt-8 text-center text-sm tracking-wide text-[hsl(217,_16%,_60%)]"
+            id="attribution"
+          >
+            Challenge by{' '}
+            <a
+              target="_blank"
+              href="https://www.frontendmentor.io?ref=challenge"
+              className="underline hover:text-dark-text"
+            >
+              Frontend Mentor
+            </a>
+            . Coded by{' '}
+            <a
+              target="_blank"
+              href="https://github.com/vietan0"
+              className="underline hover:text-dark-text"
+            >
+              Việt An
+            </a>
+            .
+          </div>
         </div>
       </div>
     </footer>
