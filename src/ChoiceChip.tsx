@@ -3,8 +3,8 @@ import { useContext } from 'react';
 import paperIcon from './assets/images/icon-paper.svg';
 import rockIcon from './assets/images/icon-rock.svg';
 import scissorsIcon from './assets/images/icon-scissors.svg';
-import computerChoose from './computerChoose';
 import { Choice, GameContext } from './GameContext';
+import computerChoose from './helper/computerChoose';
 
 type Props = {
   choice?: Choice;

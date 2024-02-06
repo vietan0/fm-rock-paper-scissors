@@ -1,13 +1,9 @@
 import { createContext, useEffect, useReducer } from 'react';
 
-import getDefaultState from './getDefaultState';
-import rockPaperScissorsLogic from './rockPaperScissorsLogic';
+import getDefaultState from './helper/getDefaultState';
+import rockPaperScissorsLogic from './helper/rockPaperScissorsLogic';
 
-export type Step =
-  | 'not-started'
-  | 'player-choose'
-  | 'computer-choose'
-  | 'finished';
+export type Step = 'not-started' | 'player-choose' | 'computer-choose';
 export type Choice = 'rock' | 'paper' | 'scissors';
 export type Result = 'win' | 'lose' | 'draw';
 export type GameState = {

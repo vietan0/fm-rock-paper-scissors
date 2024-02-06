@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 
-import ComputerChooseScreen from './ComputerChooseScreen';
 import { GameContext } from './GameContext';
-import PlayerChooseScreen from './PlayerChooseScreen';
-import StartScreen from './StartScreen';
+import ComputerChooseScreen from './screens/ComputerChoose';
+import PlayerChooseScreen from './screens/PlayerChoose';
+import StartScreen from './screens/Start';
 
 export default function App() {
   const { gameState } = useContext(GameContext);

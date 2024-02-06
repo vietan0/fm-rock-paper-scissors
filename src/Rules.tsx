@@ -1,8 +1,9 @@
 import { useReducer, useRef } from 'react';
-import rules from './assets/images/image-rules.svg';
-import closeIcon from './assets/images/icon-close.svg';
 
-function reducer(state: boolean, _action: { type: 'click' }) {
+import closeIcon from './assets/images/icon-close.svg';
+import rules from './assets/images/image-rules.svg';
+
+function reducer(state: boolean) {
   return !state;
 }
 
@@ -12,7 +13,7 @@ export default function Rules() {
 
   function closePopup(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     if (!dialogRef.current!.contains(e.target as Node)) {
-      dispatch({ type: 'click' });
+      dispatch();
     } else {
       e.stopPropagation();
     }
@@ -23,7 +24,7 @@ export default function Rules() {
   return (
     <footer className="fixed bottom-6 left-0 z-10 flex w-full justify-center rounded-full px-3 xs:justify-end xs:px-6">
       <button
-        onClick={() => dispatch({ type: 'click' })}
+        onClick={() => dispatch()}
         className="rounded px-8 py-2 text-sm uppercase tracking-[.25em] outline outline-1 duration-100 hover:bg-white hover:text-dark-text"
       >
         Rules
@@ -42,7 +43,7 @@ export default function Rules() {
             Rules
           </span>
           <button
-            onClick={() => dispatch({ type: 'click' })}
+            onClick={() => dispatch()}
             className="absolute bottom-20 right-1/2 translate-x-1/2 rounded p-3 duration-100 hover:bg-black/10 xs:bottom-auto xs:right-8 xs:top-6 xs:translate-x-0"
           >
             <img src={closeIcon} alt="" />
