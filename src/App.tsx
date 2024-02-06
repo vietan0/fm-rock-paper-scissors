@@ -12,25 +12,26 @@ export default function App() {
     gameState: { step },
   } = useContext(GameContext);
   return (
-    <div
-      id="App"
-      className={`${step === 'not-started' ? 'grid content-center' : ''} min-h-screen  overflow-hidden bg-bg-gradient px-3 pt-12 text-white xs:px-6`}
-    >
-      <Header />
-      <main className={step === 'not-started' ? '' : 'h-96'}>
-        <h1 className="sr-only">
-          Rock, Paper, Scissors - Frontend Mentor Challenge - Solution by Viet
-          An
-        </h1>
-        {step === 'not-started' ? (
-          <StartScreen />
-        ) : step === 'player-choose' ? (
-          <PlayerChooseScreen />
-        ) : (
-          <ComputerChooseScreen />
-        )}
-      </main>
-      <Rules />
+    <div id="App" className="overflow-hidden bg-bg-gradient text-white">
+      <div
+        className={`${step === 'not-started' ? 'grid content-center' : ''} relative mx-auto min-h-screen max-w-screen-xl px-3 pt-12 xs:px-6`}
+      >
+        <Header />
+        <main className={step === 'not-started' ? '' : 'h-96'}>
+          <h1 className="sr-only">
+            Rock, Paper, Scissors - Frontend Mentor Challenge - Solution by Viet
+            An
+          </h1>
+          {step === 'not-started' ? (
+            <StartScreen />
+          ) : step === 'player-choose' ? (
+            <PlayerChooseScreen />
+          ) : (
+            <ComputerChooseScreen />
+          )}
+        </main>
+        <Rules />
+      </div>
     </div>
   );
 }
