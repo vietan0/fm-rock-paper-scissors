@@ -1,24 +1,32 @@
 import { useContext } from 'react';
 
 import { GameContext } from './GameContext';
+import Header from './Header';
+import Rules from './Rules';
 import ComputerChooseScreen from './screens/ComputerChoose';
 import PlayerChooseScreen from './screens/PlayerChoose';
 import StartScreen from './screens/Start';
 
 export default function App() {
-  const { gameState } = useContext(GameContext);
+  const {
+    gameState: { step },
+  } = useContext(GameContext);
   return (
     <div
       id="App"
-      className="flex min-h-screen flex-col overflow-hidden bg-bg-gradient px-3 pt-12 text-white xs:justify-center xs:px-6"
+      className={`${step === 'not-started' ? 'grid content-center' : ''} min-h-screen  overflow-hidden bg-bg-gradient px-3 pt-12 text-white xs:px-6`}
     >
-      {gameState.step === 'not-started' ? (
-        <StartScreen />
-      ) : gameState.step === 'player-choose' ? (
-        <PlayerChooseScreen />
-      ) : (
-        <ComputerChooseScreen />
-      )}
+      <Header />
+      <main className={step === 'not-started' ? '' : 'h-96'}>
+        {step === 'not-started' ? (
+          <StartScreen />
+        ) : step === 'player-choose' ? (
+          <PlayerChooseScreen />
+        ) : (
+          <ComputerChooseScreen />
+        )}
+      </main>
+      <Rules />
     </div>
   );
 }
