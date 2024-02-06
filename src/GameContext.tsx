@@ -72,22 +72,22 @@ type Props = {
 };
 
 export default function GameProvider({ children }: Props) {
-  const [stage, dispatch] = useReducer(reducer, undefined, getDefaultState);
+  const [gameState, dispatch] = useReducer(reducer, undefined, getDefaultState);
 
   useEffect(() => {
     const history: Array<Result> = localStorage.getItem('history')
       ? JSON.parse(localStorage.getItem('history')!)
       : [];
-    if (stage.result) {
+    if (gameState.result) {
       localStorage.setItem(
         'history',
-        JSON.stringify([...history, stage.result]),
+        JSON.stringify([...history, gameState.result]),
       );
     }
-  }, [stage.result]);
+  }, [gameState.result]);
 
   return (
-    <GameContext.Provider value={{ gameState: stage, dispatch }}>
+    <GameContext.Provider value={{ gameState, dispatch }}>
       {children}
     </GameContext.Provider>
   );
